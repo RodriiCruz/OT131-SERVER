@@ -15,21 +15,15 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Data
-@Getter
-@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 
 public class Users {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -51,7 +45,7 @@ public class Users {
     @CreationTimestamp
     private LocalDate creationDate;
     private LocalDate removalDate;
-    private boolean isActive;
+    private boolean isActive = Boolean.TRUE;
 
     public Users(@NotNull @NotEmpty String firstName, @NotNull @NotEmpty String lastName,
             @NotNull @NotEmpty String email, @NotNull @NotEmpty String password) {

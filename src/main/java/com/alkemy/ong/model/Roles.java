@@ -17,21 +17,14 @@ import com.alkemy.ong.util.RoleName;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.lang.Nullable;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Data
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 
 public class Roles {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -43,10 +36,17 @@ public class Roles {
     @OneToMany
     private List<Users> users;
 
+    public Roles() {
+    }
+
     public Roles(@NotNull RoleName name, String description, List<Users> users) {
         this.name = name;
         this.description = description;
         this.users = users;
     }
 
+    public Roles(RoleName name, @Nullable String description) {
+        this.name = name;
+        this.description = description;
+    }
 }

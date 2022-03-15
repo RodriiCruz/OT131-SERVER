@@ -5,7 +5,6 @@ import com.alkemy.ong.exception.ParamNotFoundException;
 
 import java.util.List;
 
-
 public interface ActivitiesService {
 
     ActivitiesDTO save(ActivitiesDTO dto) throws ParamNotFoundException;

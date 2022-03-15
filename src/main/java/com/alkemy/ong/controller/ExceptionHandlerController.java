@@ -1,4 +1,3 @@
-//https://www.baeldung.com/exception-handling-for-rest-with-spring
 package com.alkemy.ong.controller;
 
 import com.alkemy.ong.dto.ErrorDTO;
@@ -37,15 +36,13 @@ public class ExceptionHandlerController extends ResponseEntityExceptionHandler {
 
         return handleExceptionInternal(ex, errorDTO, headers, errorDTO.getStatus(), request);
     }
-    
+
     @ExceptionHandler(value = {Exception.class})
     protected ResponseEntity<Object> handleException(RuntimeException ex, WebRequest request) {
         ErrorDTO errorDTO = new ErrorDTO(
                 HttpStatus.BAD_REQUEST,
                 Arrays.asList(ex.getMessage())
         );
-
         return handleExceptionInternal(ex, errorDTO, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
-    
 }
